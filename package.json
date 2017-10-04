@@ -1,0 +1,44 @@
+{
+  "name": "excel-utils",
+  "version": "0.0.1",
+  "description": "Some utilities if you're programmatically working with spreadsheets",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "lint": "tslint **/*.ts",
+    "pretest": "npm run compile",
+    "test": "mocha -c **/*.spec.js",
+    "compile": "rimraf dist && tsc",
+    "prepublishOnly": "npm run lint && npm run test"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "bracketSpacing": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darrinholst/excel-utils.git"
+  },
+  "keywords": [
+    "excel",
+    "spreadsheet"
+  ],
+  "author": "Darrin Holst <darrinholst@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/darrinholst/excel-utils",
+  "bugs": {
+    "url": "https://github.com/darrinholst/excel-utils/issues"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "chai": "^4.0.2",
+    "mocha": "^4.0.0",
+    "prettier": "^1.5.3",
+    "release-it": "^3.0.2",
+    "rimraf": "^2.6.1",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.1"
+  }
+}
