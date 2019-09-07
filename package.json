@@ -1,6 +1,6 @@
 {
   "name": "excel-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Some utilities if you're programmatically working with spreadsheets",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
