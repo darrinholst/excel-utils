@@ -5,11 +5,12 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "lint": "tslint **/*.ts",
+    "lint": "eslint --ext .js,.ts .",
     "pretest": "npm run compile",
     "test": "mocha -c **/*.spec.js",
     "compile": "rimraf dist && tsc",
-    "prepublishOnly": "npm run lint && npm run test"
+    "prepublishOnly": "npm run verify",
+    "verify": "npm run lint && npm run test"
   },
   "prettier": {
     "printWidth": 80,
@@ -31,14 +32,18 @@
     "url": "https://github.com/darrinholst/excel-utils/issues"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.1",
-    "@types/mocha": "^2.2.41",
-    "chai": "^4.0.2",
-    "mocha": "^4.0.0",
-    "prettier": "^1.5.3",
-    "release-it": "^3.0.2",
-    "rimraf": "^2.6.1",
-    "tslint": "^5.5.0",
-    "typescript": "^2.4.1"
+    "@types/chai": "^4.2.1",
+    "@types/mocha": "^5.2.7",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "mocha": "^6.2.0",
+    "prettier": "^1.18.2",
+    "release-it": "^12.3.6",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.5.3"
   }
 }
