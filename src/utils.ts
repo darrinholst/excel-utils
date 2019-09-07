@@ -8,7 +8,6 @@ export function getSharedFormulaOffsets(
   const rowOffset = cellRow - rangeStartRow;
   const colOffset = encodeColumn(cellCol) - encodeColumn(rangeStartCol);
   return [colOffset, rowOffset];
-
 }
 
 export function adjustDynamicCellReferences(
