@@ -8,6 +8,7 @@ export function getSharedFormulaOffsets(
   const rowOffset = cellRow - rangeStartRow;
   const colOffset = encodeColumn(cellCol) - encodeColumn(rangeStartCol);
   return [colOffset, rowOffset];
+
 }
 
 export function adjustDynamicCellReferences(
@@ -23,13 +24,16 @@ export function adjustDynamicCellReferences(
   });
 }
 
+const A = 'A'.charCodeAt(0);
+
 export function encodeColumn(column: string) {
   column = column.toUpperCase();
-  let encoded = column.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
+  let encoded = column.charCodeAt(column.length - 1) - A + 1;
 
-  for (let i = 1; i < column.length; i++) {
-    encoded = encoded * (26 * i);
-    encoded = encoded + column.charCodeAt(i) - 'A'.charCodeAt(0) + 1;
+  for (let i = column.length - 2; i >= 0; i--) {
+    encoded =
+      encoded +
+      (column.charCodeAt(i) - A + 1) * Math.pow(26, column.length - i - 1);
   }
 
   return encoded;
@@ -39,11 +43,11 @@ export function decodeColumn(column: number) {
   let codes = [];
 
   while (column > 26) {
-    codes.unshift('A'.charCodeAt(0) + (column - 1) % 26);
+    codes.unshift(A + ((column - 1) % 26));
     column = Math.ceil(column / 26) - 1;
   }
 
-  codes.unshift('A'.charCodeAt(0) + column - 1);
+  codes.unshift(A + column - 1);
   return String.fromCharCode(...codes);
 }
 
